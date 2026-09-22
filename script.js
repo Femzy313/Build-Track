@@ -134,113 +134,164 @@ const pricing = {
 };
 
 
-/* =========================================
+
+/* ==============================
    PROJECT ESTIMATOR
-========================================= */
+============================== */
 
-const estimatorForm =
-    document.getElementById("estimatorForm");
+const estimatorForm = document.getElementById("estimatorForm");
 
-const estimateResult =
-    document.getElementById("estimateResult");
+if (estimatorForm) {
 
-const estimateAmount =
-    document.getElementById("estimateAmount");
+    estimatorForm.addEventListener("submit", function (event) {
 
-
-if (
-    estimatorForm &&
-    estimateResult &&
-    estimateAmount
-) {
-
-    estimatorForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
+        event.preventDefault();
 
 
-            /* Get form values */
+        /* Get form values */
 
-            const projectType =
-                document.getElementById(
-                    "projectType"
-                ).value;
+        const projectType =
+            document.getElementById("projectType").value;
 
-            const propertySize =
-                Number(
-                    document.getElementById(
-                        "propertySize"
-                    ).value
-                );
+        const propertySize =
+            Number(
+                document.getElementById("propertySize").value
+            );
 
-            const finishingLevel =
-                document.getElementById(
-                    "finishingLevel"
-                ).value;
+        const finishingLevel =
+            document.getElementById("finishingLevel").value;
 
-            const location =
-                document.getElementById(
-                    "location"
-                ).value.trim();
+        const location =
+            document.getElementById("location").value.trim();
 
-            const phone =
-                document.getElementById(
-                    "estimatePhone"
-                ).value.trim();
+        const phone =
+            document.getElementById("estimatePhone").value.trim();
 
 
-            /* Validate */
+        /* Validate */
 
-            if (
-                projectType === "" ||
-                propertySize <= 0 ||
-                finishingLevel === "" ||
-                location === "" ||
-                phone === ""
-            ) {
+        if (
+            projectType === "" ||
+            propertySize <= 0 ||
+            finishingLevel === "" ||
+            location === "" ||
+            phone === ""
+        ) {
 
-                alert(
-                    "Please complete all estimator fields."
-                );
+            alert(
+                "Please complete all estimator fields."
+            );
 
-                return;
+            return;
 
+        }
+
+
+        /* ==============================
+           PRICING
+        ============================== */
+
+        const pricing = {
+
+            residential: {
+                basic: 180000,
+                standard: 250000,
+                premium: 350000
+            },
+
+            commercial: {
+                basic: 220000,
+                standard: 300000,
+                premium: 400000
+            },
+
+            renovation: {
+                basic: 120000,
+                standard: 180000,
+                premium: 280000
+            },
+
+            finishing: {
+                basic: 80000,
+                standard: 130000,
+                premium: 200000
             }
 
-
-            /* Get price */
-
-            const pricePerSquareMeter =
-                pricing[projectType][finishingLevel];
+        };
 
 
-            if (!pricePerSquareMeter) {
+        /* Get price */
 
-                alert(
-                    "Unable to calculate the estimate."
-                );
-
-                return;
-
-            }
+        const pricePerSquareMeter =
+            pricing[projectType]?.[finishingLevel];
 
 
-            /* Calculate */
+        if (!pricePerSquareMeter) {
 
-            const estimatedCost =
-                propertySize *
-                pricePerSquareMeter;
+            alert(
+                "Unable to calculate the estimate."
+            );
 
+            return;
 
-            /* Display estimate */
-
-            estimateAmount.textContent =
-                formatNaira(estimatedCost);
+        }
 
 
-            estimateResult.hidden = false;
+        /* Calculate */
+
+        const estimatedCost =
+            propertySize *
+            pricePerSquareMeter;
+
+
+        /* Get result elements */
+
+        const estimateResult =
+            document.getElementById("estimateResult");
+
+        const estimateAmount =
+            document.getElementById("estimateAmount");
+
+
+        if (!estimateResult || !estimateAmount) {
+
+            console.error(
+                "Estimator result elements are missing."
+            );
+
+            return;
+
+        }
+
+
+        /* Format Naira */
+
+        const formattedAmount =
+            new Intl.NumberFormat("en-NG", {
+                style: "currency",
+                currency: "NGN",
+                maximumFractionDigits: 0
+            }).format(estimatedCost);
+
+
+        /* Display estimate */
+
+        estimateAmount.textContent =
+            formattedAmount;
+
+        estimateResult.hidden = false;
+
+
+        /* Scroll to result */
+
+        estimateResult.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    });
+
+}
 
 
             /* Create WhatsApp button if it does not exist */
@@ -275,56 +326,123 @@ if (
             }
 
 
-            /* WhatsApp action */
+        
+/* ==============================
+   SEND ESTIMATE TO WHATSAPP
+============================== */
 
-            whatsappButton.onclick =
-                function () {
+if (whatsappButton) {
 
-                    const message =
-                        "BUILDTRACK CONSTRUCTION\n\n" +
+    whatsappButton.onclick = function () {
 
-                        "PROJECT ESTIMATE REQUEST\n" +
-                        "------------------------\n\n" +
+        /* Get latest form values */
 
-                        "Project Type: " +
-                        projectType +
-                        "\n" +
+        const projectType =
+            document.getElementById("projectType").value;
 
-                        "Property Size: " +
-                        propertySize +
-                        " sqm\n" +
+        const propertySize =
+            document.getElementById("propertySize").value;
 
-                        "Finishing Level: " +
-                        finishingLevel +
-                        "\n" +
+        const finishingLevel =
+            document.getElementById("finishingLevel").value;
 
-                        "Project Location: " +
-                        location +
-                        "\n" +
+        const location =
+            document.getElementById("location").value.trim();
 
-                        "Customer Phone: " +
-                        phone +
-                        "\n\n" +
+        const phone =
+            document.getElementById("estimatePhone").value.trim();
 
-                        "Preliminary Estimate: " +
-                        formatNaira(
-                            estimatedCost
-                        ) +
-                        "\n\n" +
-
-                        "I would like to discuss this project " +
-                        "and get a detailed quotation.";
+        const estimatedAmount =
+            document.getElementById("estimateAmount").textContent;
 
 
-                    openWhatsApp(message);
+        /* Format project type */
 
-                };
+        const projectTypeText = {
 
-        }
-    );
+            residential: "Residential Building",
+            commercial: "Commercial Building",
+            renovation: "Renovation",
+            finishing: "Interior Finishing"
+
+        }[projectType] || projectType;
+
+
+        /* Format finishing level */
+
+        const finishingText = {
+
+            basic: "Basic",
+            standard: "Standard",
+            premium: "Premium"
+
+        }[finishingLevel] || finishingLevel;
+
+
+        /* Build WhatsApp message */
+
+        const message =
+            "BUILDTRACK CONSTRUCTION\n\n" +
+
+            "PRELIMINARY PROJECT ESTIMATE\n" +
+            "----------------------------\n\n" +
+
+            "Project Type: " +
+            projectTypeText +
+            "\n" +
+
+            "Property Size: " +
+            propertySize +
+            " sqm\n" +
+
+            "Finishing Level: " +
+            finishingText +
+            "\n" +
+
+            "Project Location: " +
+            location +
+            "\n" +
+
+            "Phone: " +
+            phone +
+            "\n\n" +
+
+            "Estimated Cost: " +
+            estimatedAmount +
+            "\n\n" +
+
+            "This is a preliminary estimate and not a final quotation.\n\n" +
+
+            "I would like to request a detailed quotation.";
+
+
+        /* WhatsApp number */
+
+        const businessWhatsApp =
+            "234XXXXXXXXXX";
+
+
+        /* Open WhatsApp */
+
+        const whatsappURL =
+            "https://wa.me/" +
+            businessWhatsApp +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    };
 
 }
 
+
+
+        
 
 /* =========================================
    QUOTE REQUEST FORM
@@ -375,21 +493,14 @@ if (quoteForm) {
                     "budget"
                 ).value;
 
-            const preferredStartDate =
-                document.getElementById(
-                    "preferredStartDate"
-                ).value;
+           const preferredStartDate = "";
 
-            const preferredContact =
-                document.getElementById(
-                    "preferredContact"
-                ).value;
+const preferredContact = "WhatsApp";
 
-            const projectDescription =
-                document.getElementById(
-                    "projectDescription"
-                ).value.trim();
-
+const projectDescription =
+    document.getElementById(
+        "projectDescription"
+    ).value.trim();
 
             /* Validate */
 

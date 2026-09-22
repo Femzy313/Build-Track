@@ -566,203 +566,230 @@
         </section>
 
 
-        <!-- ==============================
-             ESTIMATOR
-        =============================== -->
+        
+<!-- ==============================
+     PROJECT ESTIMATOR
+============================== -->
 
-        <section class="estimator section" id="estimator">
+<section class="estimator section" id="estimator">
 
-            <div class="container estimator-container">
+    <div class="container estimator-container">
 
+        <!-- Estimator Introduction -->
+        <div class="estimator-content">
 
-                <div class="estimator-content">
+            <span class="section-tag">
+                PROJECT ESTIMATOR
+            </span>
 
-                    <span class="section-tag">
-                        PROJECT ESTIMATOR
-                    </span>
+            <h2>
+                Get a Preliminary
+                Project Estimate.
+            </h2>
 
-                    <h2>
-                        Get a Preliminary
-                        Project Estimate.
-                    </h2>
+            <p>
+                Answer a few questions to get an initial estimate
+                for your project. This is not a final quotation.
+                A detailed quote requires professional assessment.
+            </p>
 
-                    <p>
-                        Answer a few questions to get an initial estimate
-                        for your project. This is not a final quotation.
-                        A detailed quote requires professional assessment.
-                    </p>
+            <ul class="estimator-benefits">
 
-                    <ul class="estimator-benefits">
+                <li>
+                    ✓ Quick preliminary estimate
+                </li>
 
-                        <li>
-                            ✓ Quick preliminary estimate
-                        </li>
+                <li>
+                    ✓ Understand potential project costs
+                </li>
 
-                        <li>
-                            ✓ Understand potential project costs
-                        </li>
+                <li>
+                    ✓ Plan your construction budget
+                </li>
 
-                        <li>
-                            ✓ Plan your construction budget
-                        </li>
+                <li>
+                    ✓ Request a professional quotation
+                </li>
 
-                        <li>
-                            ✓ Request a professional quotation
-                        </li>
+            </ul>
 
-                    </ul>
-
-                </div>
-
-
-                <div class="estimator-form">
-
-                    <form id="estimatorForm">
-
-                        <div class="form-group">
-
-                            <label for="projectType">
-                                Project Type
-                            </label>
-
-                            <select
-                                id="projectType"
-                                required
-                            >
-
-                                <option value="">
-                                    Select project type
-                                </option>
-
-                                <option value="residential">
-                                    Residential Building
-                                </option>
-
-                                <option value="commercial">
-                                    Commercial Building
-                                </option>
-
-                                <option value="renovation">
-                                    Renovation
-                                </option>
-
-                                <option value="finishing">
-                                    Interior Finishing
-                                </option>
-
-                            </select>
-
-                        </div>
+        </div>
 
 
-                        <div class="form-group">
+        <!-- Estimator Form -->
+        <div class="estimator-form">
 
-                            <label for="propertySize">
-                                Estimated Property Size (sqm)
-                            </label>
+            <form id="estimatorForm">
 
-                            <input
-                                type="number"
-                                id="propertySize"
-                                min="1"
-                                placeholder="e.g. 300"
-                                required
-                            >
+                <!-- Project Type -->
+                <div class="form-group">
 
-                        </div>
+                    <label for="projectType">
+                        Project Type
+                    </label>
 
-
-                        <div class="form-group">
-
-                            <label for="finishingLevel">
-                                Finishing Level
-                            </label>
-
-                            <select
-                                id="finishingLevel"
-                                required
-                            >
-
-                                <option value="">
-                                    Select finishing level
-                                </option>
-
-                                <option value="basic">
-                                    Basic
-                                </option>
-
-                                <option value="standard">
-                                    Standard
-                                </option>
-
-                                <option value="premium">
-                                    Premium
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="location">
-                                Project Location
-                            </label>
-
-                            <input
-                                type="text"
-                                id="location"
-                                placeholder="e.g. Lagos"
-                                required
-                            >
-
-                        </div>
-
-
-                        <button
-                            type="submit"
-                            class="btn btn-primary full-width"
-                        >
-                            Calculate Estimate
-                        </button>
-
-                    </form>
-
-
-                    <div
-                        class="estimate-result"
-                        id="estimateResult"
-                        hidden
+                    <select
+                        id="projectType"
+                        required
                     >
 
-                        <span>
-                            Preliminary Estimate
-                        </span>
+                        <option value="">
+                            Select project type
+                        </option>
 
-                        <strong id="estimateAmount">
-                            ₦0
-                        </strong>
+                        <option value="residential">
+                            Residential Building
+                        </option>
 
-                        <p>
-                            This estimate is for planning purposes only.
-                            Contact us for a detailed quotation.
-                        </p>
+                        <option value="commercial">
+                            Commercial Building
+                        </option>
 
-                        <a
-                            href="#quote"
-                            class="btn btn-secondary"
-                        >
-                            Request Detailed Quote
-                        </a>
+                        <option value="renovation">
+                            Renovation
+                        </option>
 
-                    </div>
+                        <option value="finishing">
+                            Interior Finishing
+                        </option>
+
+                    </select>
 
                 </div>
+
+
+                <!-- Property Size -->
+                <div class="form-group">
+
+                    <label for="propertySize">
+                        Estimated Property Size (sqm)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="propertySize"
+                        min="1"
+                        placeholder="e.g. 300"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Finishing Level -->
+                <div class="form-group">
+
+                    <label for="finishingLevel">
+                        Finishing Level
+                    </label>
+
+                    <select
+                        id="finishingLevel"
+                        required
+                    >
+
+                        <option value="">
+                            Select finishing level
+                        </option>
+
+                        <option value="basic">
+                            Basic
+                        </option>
+
+                        <option value="standard">
+                            Standard
+                        </option>
+
+                        <option value="premium">
+                            Premium
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Project Location -->
+                <div class="form-group">
+
+                    <label for="location">
+                        Project Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="e.g. Lagos"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Phone Number -->
+                <div class="form-group">
+
+                    <label for="estimatePhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="estimatePhone"
+                        placeholder="e.g. 08012345678"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="btn btn-primary full-width"
+                >
+                    Calculate Estimate
+                </button>
+
+            </form>
+
+
+            <!-- Estimate Result -->
+            <div
+                class="estimate-result"
+                id="estimateResult"
+                hidden
+            >
+
+                <span>
+                    Preliminary Estimate
+                </span>
+
+                <strong id="estimateAmount">
+                    ₦0
+                </strong>
+
+                <p>
+                    This estimate is for planning purposes only.
+                    Contact us for a detailed quotation.
+                </p>
+
+                <a
+                    href="#quote"
+                    class="btn btn-secondary"
+                >
+                    Request Detailed Quote
+                </a>
 
             </div>
 
-        </section>
+        </div>
+
+    </div>
+
+</section>
+
+
 
 
         <!-- ==============================
@@ -770,170 +797,60 @@
         =============================== -->
 
         <section class="process section" id="process">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-tag">OUR PROCESS</span>
+            <h2>From Idea to Completion.</h2>
+            <p>A simple and transparent process designed to keep you informed at every stage.</p>
+        </div>
 
-            <div class="container">
+        <div class="process-grid">
 
-                <div class="section-heading">
+            <article class="process-step">
+                <span>01</span>
+                <img src="images/project-request.jpeg" alt="Project consultation">
+                <h3>Tell Us About Your Project</h3>
+                <p>Submit your project requirements and tell us what you want to build.</p>
+            </article>
 
-                    <span class="section-tag">
-                        OUR PROCESS
-                    </span>
+            <article class="process-step">
+                <span>02</span>
+                <img src="images/site-inspection.jpeg" alt="Construction site inspection">
+                <h3>Site Assessment</h3>
+                <p>Our team reviews your requirements and assesses the project site.</p>
+            </article>
 
-                    <h2>
-                        From Idea to Completion.
-                    </h2>
+            <article class="process-step">
+                <span>03</span>
+                <img src="images/project-planning.jpeg" alt="Construction project planning">
+                <h3>Planning & Quotation</h3>
+                <p>We prepare the project scope, estimated costs and construction plan.</p>
+            </article>
 
-                    <p>
-                        A simple and transparent process designed to keep
-                        you informed at every stage.
-                    </p>
+            <article class="process-step">
+                <span>04</span>
+                <img src="images/construction-work.jpeg" alt="Construction work">
+                <h3>Construction</h3>
+                <p>Construction begins with regular communication and progress updates.</p>
+            </article>
 
-                </div>
+            <article class="process-step">
+                <span>05</span>
+                <img src="images/project-inspection.jpeg" alt="Construction project inspection">
+                <h3>Inspection</h3>
+                <p>Completed work is reviewed before the final handover.</p>
+            </article>
 
+            <article class="process-step">
+                <span>06</span>
+                <img src="images/project-handover.jpeg" alt="Completed construction project handover">
+                <h3>Project Handover</h3>
+                <p>Your completed project is handed over and ready for use.</p>
+            </article>
 
-                <div class="process-grid">
-
-
-                    <!-- STEP 1 -->
-
-                    <article class="process-step">
-
-                        <span>
-                            01
-                        </span>
-
-                        <h3>
-                            Tell Us About Your Project
-                        </h3>
-
-                        <p>
-                            Submit your project requirements and tell us
-                            what you want to build.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 2 -->
-
-                    <article class="process-step">
-
-                        <span>
-                            02
-                        </span>
-
-                        <img
-                            src="images/site-inspection.jpeg"
-                            alt="Construction site inspection"
-                        >
-
-                        <h3>
-                            Site Assessment
-                        </h3>
-
-                        <p>
-                            Our team reviews your requirements and assesses
-                            the project site.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 3 -->
-
-                    <article class="process-step">
-
-                        <span>
-                            03
-                        </span>
-
-                        <img
-                            src="images/project-planning.jpeg"
-                            alt="Construction project planning"
-                        >
-
-                        <h3>
-                            Planning & Quotation
-                        </h3>
-
-                        <p>
-                            We prepare the project scope, estimated costs
-                            and construction plan.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 4 -->
-
-                    <article class="process-step">
-
-                        <span>
-                            04
-                        </span>
-
-                        <h3>
-                            Construction
-                        </h3>
-
-                        <p>
-                            Construction begins with regular communication
-                            and progress updates.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 5 -->
-
-                    <article class="process-step">
-
-                        <span>
-                            05
-                        </span>
-
-                        <h3>
-                            Inspection
-                        </h3>
-
-                        <p>
-                            Completed work is reviewed before the final
-                            handover.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 6 -->
-
-                    <article class="process-step">
-
-                        <span>
-                            06
-                        </span>
-
-                        <img
-                            src="images/project-handover.jpeg"
-                            alt="Completed construction project handover"
-                        >
-
-                        <h3>
-                            Project Handover
-                        </h3>
-
-                        <p>
-                            Your completed project is handed over and ready
-                            for use.
-                        </p>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
+        </div>
+    </div>
+</section>
 
 
         <!-- ==============================
